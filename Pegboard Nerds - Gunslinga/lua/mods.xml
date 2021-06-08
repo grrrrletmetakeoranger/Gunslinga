@@ -21,5 +21,33 @@ Type = "ActorFrame"
 	<Layer Type = "ActorProxy" Name = "PJ[2]" />
 	<Layer Type = "ActorProxy" Name = "PP[1]" />
 	<Layer Type = "ActorProxy" Name = "PP[2]" />
+	<Layer Type="ActorFrameTexture"
+    OnCommand="%function(self)
+
+    self:SetWidth(DISPLAY:GetDisplayWidth());
+    self:SetHeight(DISPLAY:GetDisplayHeight());
+    self:EnableDepthBuffer( false );
+    self:EnableAlphaBuffer( true );
+    self:EnableFloat( false );
+    self:EnablePreserveTexture( true );
+    self:hidden(0);
+    self:diffusealpha(1);
+    self:zoom(0.6)
+    self:Create();
+    myAft=self
+end"
+/>
+	
+	<Layer Type="Sprite"
+	Frag="shaders/screen.frag"
+	OnCommand="%function(self) 
+	crt_shader = self; 
+	self:xy(SCREEN_CENTER_X, SCREEN_CENTER_Y);
+	self:basezoomx(SCREEN_WIDTH/DISPLAY:GetDisplayWidth());
+	self:basezoomy(SCREEN_HEIGHT/DISPLAY:GetDisplayHeight()*-1);
+	self:SetTexture(myAft:GetTexture());
+	self:diffusealpha(1)
+	end"
+	/>
 	<Layer File="_68/68mods.xml" />
 </children></Mods>
