@@ -20,6 +20,7 @@ end"
         clone1offMessageCommand="hidden,1"
 		InitCommand="%function(self)
 		
+		self:hidden(1);
 		self:zoom(1);
 		self:xy(scx-320, scy);
 		
@@ -32,7 +33,8 @@ end"
 		clone2onMessageCommand="hidden,0"
         clone2offMessageCommand="hidden,1"
 		InitCommand="%function(self)
-		
+
+		self:hidden(1);
 		self:zoom(1);
 		self:xy(scx+320, scy);
 		
@@ -45,6 +47,7 @@ end"
         bbeamoffMessageCommand="hidden,1"
         InitCommand="%function(self)
 		
+		self:hidden(1);
 		self:zoom(0.5);
 		self:xy(scx, scy);
 		
@@ -73,6 +76,7 @@ end"
         bbeamoffMessageCommand="hidden,1"
         InitCommand="%function(self)
 		
+		self:hidden(1);
 		self:zoom(0.5);
 		self:xy(scx, scy);
 		
@@ -87,6 +91,7 @@ end"
         bbeamoffMessageCommand="hidden,1"
         InitCommand="%function(self)
 		
+		self:hidden(1);
 		self:zoom(0.5);
 		self:xy(scx, scy);
 		
@@ -184,9 +189,9 @@ end"
     {390,390.5,'*2 -75 movey0, *2 -75 movey2','end'},
     {391,391.5,'*2 -75 movey1, *2 -75 movey3','end'},
 	
-	{406,410,'*4 -200 tornado','end'},
-	{414,418,'*4 200 tornado','end'},
-	{422,425.5,'*4 -200 tornado','end'},
+	{406,410,'*4 -100 tornado','end'},
+	{414,418,'*4 100 tornado','end'},
+	{422,425.5,'*4 -100 tornado','end'},
 	
 	--end
 	{436,466,'*1 150 drunk','end'},
