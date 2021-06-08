@@ -1,0 +1,757 @@
+<ActorFrame
+InitCommand="%function(self)
+
+	songName = GAMESTATE:GetCurrentSong():GetSongDir();
+	
+	m_bl = 60/174 --use this to define length of a beat for use in the rest of the song (Put the BPM of your song in the denominator to replace 145)
+	sw = SCREEN_WIDTH
+	sh = SCREEN_HEIGHT --shortcuts
+	scy = SCREEN_CENTER_Y
+	scx = SCREEN_CENTER_X
+	
+end"
+
+><children>
+
+	<Layer 
+		Type="ActorProxy" 
+		Var="Clone1"
+		clone1onMessageCommand="hidden,0"
+        clone1offMessageCommand="hidden,1"
+		InitCommand="%function(self)
+		
+		self:zoom(1);
+		self:xy(scx-320, scy);
+		
+		end"
+	/>
+	
+	<Layer 
+		Type="ActorProxy" 
+		Var="Clone2"
+		clone2onMessageCommand="hidden,0"
+        clone2offMessageCommand="hidden,1"
+		InitCommand="%function(self)
+		
+		self:zoom(1);
+		self:xy(scx+320, scy);
+		
+		end"
+	/>
+	
+    <Layer 
+        File="bbeam.png"
+        bbeamonMessageCommand="hidden,0"
+        bbeamoffMessageCommand="hidden,1"
+        InitCommand="%function(self)
+		
+		self:zoom(0.5);
+		self:xy(scx, scy);
+		
+		Bbeam = self;	
+            
+        end"
+    />
+
+	<Layer 
+        File="bbeam.png"
+        bbeamonMessageCommand="hidden,0"
+        bbeamoffMessageCommand="hidden,1"
+        InitCommand="%function(self)
+		
+		self:zoom(0.5);
+		self:xy(scx, scy);
+		
+		Bbeam1 = self;
+            
+        end"
+    />
+	
+    <Layer 
+        File="bbeam.png"
+        bbeamonMessageCommand="hidden,0"
+        bbeamoffMessageCommand="hidden,1"
+        InitCommand="%function(self)
+		
+		self:zoom(0.5);
+		self:xy(scx, scy);
+		
+		Bbeam2 = self;
+            
+        end"
+    />
+
+	<Layer 
+        File="bbeam.png"
+        bbeamonMessageCommand="hidden,0"
+        bbeamoffMessageCommand="hidden,1"
+        InitCommand="%function(self)
+		
+		self:zoom(0.5);
+		self:xy(scx, scy);
+		
+		Bbeam3 = self;
+            
+        end"
+    />
+
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+
+	<Layer
+		Type="Quad"
+		OnCommand="hidden,1"
+		InitCommand="%function(self)
+		
+			checked = false;
+			mod_plr = {};		
+			mod_firstSeenBeat = GAMESTATE:GetSongBeat();
+			mods = {
+	--Load immediately
+	{0,999,'*-1 2x, *-1 overhead, *-1 approachtype, *-1 dizzyholds, *-1 stealthpastreceptors, *-1 modtimer','end'},
+	{0,1,'*-1 600 zoom','len'},
+	{0,30,'*1 150 drunk','end'},
+	
+	
+	--begginning
+	{0,6,'*2 720 rotationz','end'},
+	{1,6,'*2 100 zoom','end'},
+	{6,1,'*-1 0 rotationz','len'},
+	
+	--funny begginning part
+	{32,98.99,'*1 -30 tornado','end'},
+	{99,101,'*0.2 0 tornado','end'},
+	{100,116,'*1 200 bumpy','end'},
+	{116,124,'*1 400 bumpy','end'},
+	{124,125.750,'*1 ww0 bumpy','end'},
+	{128,1,'*-1 0 bumpy','len'},
+	
+	--drop
+	{134,139,'*1 -20 spiralx','end'},
+	{141,147,'*1 -20 spiraly','end'},
+	{150,155.500,'*1 30 spiralx','end'},
+	{150,155.500,'*1 30 spiraly','end'},
+	{166,170.500,'*1 20 spiralx','end'},
+	{173,177.500,'*1 20 spiraly','end'},
+	{182,185.500,'*1 -30 spiralx','end'},
+	{182,185,'*1 -30 spiraly','end'},
+	{166,167,'*1 150 zoom','end'},
+	{167.500,169,'*1 150 zoom','end'},
+	{169.500,171,'*1 150 zoom','end'},
+	{166,168,'*1 100 flip','end'},
+	{170,172,'*1 100 flip','end'},
+	{172,6,'*-1 100 flip','len'},
+	
+	--idk
+	{196,230,'*1 150 drunk','end'},
+	{268,273.500,'*1 -10 spiralx','end'},
+	{268,273.500,'*1 -10 spiraly','end'},
+	
+	
+	--funny begginning part but 2
+	{274,338.99,'*0.2 -30 tornado','end'},
+	{338,339,'*0.2 0 tornado','end'},
+	{340,356,'*1 200 bumpy','end'},
+	{356,363.500,'*1 400 bumpy','end'},
+	{363,365.750,'*1 600 bumpy','end'},
+	{366,1,'*-1 0 bumpy','len'},
+	
+	--drop 2
+	{374,0.1,'*2 300 invert','len'},
+	
+	{374,391,'*0.1 250% movex','end'},
+	
+	{374,374.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {375,375.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{376,376.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {377,377.5,'*2 -75 movey1, *2 -75 movey3','end'},
+    {378,378.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {379,379.5,'*2 -75 movey1, *2 -75 movey3','end'},
+    {380,380.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{381,381.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{382,382.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {383,383.5,'*2 -75 movey1, *2 -75 movey3','end'},
+    {384,384.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {385,385.5,'*2 -75 movey1, *2 -75 movey3','end'},
+    {386,386.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{387,387.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{388,388.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {389,389.5,'*2 -75 movey1, *2 -75 movey3','end'},
+    {390,390.5,'*2 -75 movey0, *2 -75 movey2','end'},
+    {391,391.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	
+	{406,410,'*4 -200 tornado','end'},
+	{414,418,'*4 200 tornado','end'},
+	{422,425.5,'*4 -200 tornado','end'},
+	
+	--end
+	{436,466,'*1 150 drunk','end'},
+	{466,475,'*0.1 0 zoom','end'},
+	{475,5,'*-1 0 zoom','len'},
+	}
+			curaction = 1;
+			mod_actions = {
+			
+			{0,function()
+					MESSAGEMAN:Broadcast('clone1off')
+				end,true},
+			
+			{0,function()
+					MESSAGEMAN:Broadcast('clone2off')
+				end,true},
+			
+			--On/Off for funny beams :]
+			{0,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{134,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{134.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{134.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{134.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{135,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{135.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{135.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{135.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{136,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{136.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{136.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{136.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{137,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{137.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{137.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{137.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{138,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{138.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{138.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{138.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{139,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{139.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{141,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{141.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{141.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{141.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{142,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{142.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{142.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{142.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{143,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{143.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{143.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{143.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{144,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{144.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{144.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{144.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{145,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{145.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{145.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{145.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{146,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{146.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{150,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{150.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{150.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+						
+			{150.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{151,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{151.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{151.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{151.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{152,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{152.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{152.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{152.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{153,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{153.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{153.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{153.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{154,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{154.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{154.500,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{154.750,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{155,function()
+					MESSAGEMAN:Broadcast('bbeamon')
+				end,true},
+			
+			{155.250,function()
+					MESSAGEMAN:Broadcast('bbeamoff')
+				end,true},
+			
+			{372,function()
+					MESSAGEMAN:Broadcast('clone1on')
+				end,true},
+			
+			{373,function()
+					MESSAGEMAN:Broadcast('clone2on')
+				end,true},
+			
+			{396,function()
+					MESSAGEMAN:Broadcast('clone1off')
+				end,true},
+			
+			{398,function()
+					MESSAGEMAN:Broadcast('clone2off')
+				end,true},
+			
+			{-10,function()
+			local P1 = SCREENMAN:GetTopScreen():GetChild('PlayerP1')
+			
+			if P1 then
+				Clone1:SetTarget(P1:GetChild('NoteField'))
+			end
+			
+			local P1 = SCREENMAN:GetTopScreen():GetChild('PlayerP1')
+			
+			if P1 then
+				Clone2:SetTarget(P1:GetChild('NoteField'))
+			end
+				for i = 1,2 do
+				local p = SCREENMAN:GetTopScreen():GetChild('PlayerP'..i)
+					if p then
+						p:x(SCREEN_CENTER_X)
+					end
+				end
+			end,true},
+			}
+			
+---------------------------------------------------------------------------------------
+----------------------If you're starting out, ignore like everything below this--------
+---------------------------------------------------------------------------------------
+			
+			--funny clone part thingy
+			
+			
+			for i=374.25,392,2 do
+						table.insert(mods,{i,1,'*2 350 invert','len'});
+						table.insert(mods,{i+1,1,'*2 250 invert','len'});
+					end
+			
+			--this is for moving the funi beams :]
+			
+			for Bbeams = 134,139,0.25 do
+				local power = (Bbeams - 130) * (math.mod(Bbeams, 8) - 4)
+				table.insert(mod_actions,{Bbeams, function()
+					Bbeam:finishtweening()
+					Bbeam:x(scx+power)
+					Bbeam:decelerate(0.2)
+					Bbeam:x(scx-power)
+				end})
+			end
+			
+			for Bbeams1 = 134,139,0.25 do
+				local power = (Bbeams1 - 110) * (math.mod(Bbeams1, 8) - 4)
+				table.insert(mod_actions,{Bbeams1, function()
+					Bbeam1:finishtweening()
+					Bbeam1:x(scx)
+					Bbeam1:decelerate(0.3)
+					Bbeam1:x(scx+power)
+				end})
+			end
+			
+			for Bbeams2 = 134,139,0.25 do
+				local power = (Bbeams2 - 90) * (math.mod(Bbeams2, 8) - 4)
+				table.insert(mod_actions,{Bbeams2, function()
+					Bbeam2:finishtweening()
+					Bbeam2:x(scx-power)
+					Bbeam2:decelerate(0.4)
+					Bbeam2:x(scx+power)
+				end})
+			end
+			
+			for Bbeams3 = 134,139,0.25 do
+				local power = (Bbeams3 - 70) * (math.mod(Bbeams3, 8) - 4)
+				table.insert(mod_actions,{Bbeams3, function()
+					Bbeam3:finishtweening()
+					Bbeam3:x(scx+power)
+					Bbeam3:decelerate(0.5)
+					Bbeam3:x(scx)
+				end})
+			end
+			
+			for Bbeams = 141,147,0.25 do
+				local power = (Bbeams - 130) * (math.mod(Bbeams, 8) - 4)
+				table.insert(mod_actions,{Bbeams, function()
+					Bbeam:finishtweening()
+					Bbeam:x(scx+power)
+					Bbeam:decelerate(0.2)
+					Bbeam:x(scx-power)
+				end})
+			end
+			
+			for Bbeams1 = 141,147,0.25 do
+				local power = (Bbeams1 - 110) * (math.mod(Bbeams1, 8) - 4)
+				table.insert(mod_actions,{Bbeams1, function()
+					Bbeam1:finishtweening()
+					Bbeam1:x(scx)
+					Bbeam1:decelerate(0.3)
+					Bbeam1:x(scx+power)
+				end})
+			end
+			
+			for Bbeams2 = 141,147,0.25 do
+				local power = (Bbeams2 - 90) * (math.mod(Bbeams2, 8) - 4)
+				table.insert(mod_actions,{Bbeams2, function()
+					Bbeam2:finishtweening()
+					Bbeam2:x(scx-power)
+					Bbeam2:decelerate(0.4)
+					Bbeam2:x(scx+power)
+				end})
+			end
+			
+			for Bbeams3 = 141,147,0.25 do
+				local power = (Bbeams3 - 70) * (math.mod(Bbeams3, 8) - 4)
+				table.insert(mod_actions,{Bbeams3, function()
+					Bbeam3:finishtweening()
+					Bbeam3:x(scx+power)
+					Bbeam3:decelerate(0.5)
+					Bbeam3:x(scx)
+				end})
+			end
+			
+			for Bbeams = 150,155,0.25 do
+				local power = (Bbeams - 130) * (math.mod(Bbeams, 8) - 4)
+				table.insert(mod_actions,{Bbeams, function()
+					Bbeam:finishtweening()
+					Bbeam:x(scx+power)
+					Bbeam:decelerate(0.2)
+					Bbeam:x(scx-power)
+				end})
+			end
+			
+			for Bbeams1 = 150,155,0.25 do
+				local power = (Bbeams1 - 110) * (math.mod(Bbeams1, 8) - 4)
+				table.insert(mod_actions,{Bbeams1, function()
+					Bbeam1:finishtweening()
+					Bbeam1:x(scx)
+					Bbeam1:decelerate(0.3)
+					Bbeam1:x(scx+power)
+				end})
+			end
+			
+			for Bbeams2 = 150,155,0.25 do
+				local power = (Bbeams2 - 90) * (math.mod(Bbeams2, 8) - 4)
+				table.insert(mod_actions,{Bbeams2, function()
+					Bbeam2:finishtweening()
+					Bbeam2:x(scx-power)
+					Bbeam2:decelerate(0.4)
+					Bbeam2:x(scx+power)
+				end})
+			end
+			
+			for Bbeams3 = 150,155,0.25 do
+				local power = (Bbeams3 - 70) * (math.mod(Bbeams3, 8) - 4)
+				table.insert(mod_actions,{Bbeams3, function()
+					Bbeam3:finishtweening()
+					Bbeam3:x(scx+power)
+					Bbeam3:decelerate(0.5)
+					Bbeam3:x(scx)
+				end})
+			end
+			
+			function modtable_compare(a,b)
+				return a[1] < b[1]
+			end
+			
+			if table.getn(mod_actions) > 1 then
+				table.sort(mod_actions, modtable_compare)
+			end
+			
+			self:queuecommand('Update');
+			
+		end"
+		
+		UpdateCommand="%function(self)
+		
+			local beat = GAMESTATE:GetSongBeat()
+		
+			if beat>=0 and not checked then
+					local ThingsToGrab = {'BPMDisplay','LifeFrame','ScoreFrame','Lyrics','SongBackground','SongForeground','Overlay','Underlay'}
+					local ThingsToHide = {'BPMDisplay','LifeFrame','ScoreFrame','Overlay','Underlay'}
+					for pn=1,2 do
+						_G['P'..pn] = SCREENMAN:GetTopScreen():GetChild('PlayerP'..pn) or nil;
+						if _G['P'..pn] then
+							table.insert(mod_plr, _G['P'..pn])
+							_G['jud'..pn]=_G['P'..pn]:GetChild('Judgment');
+							_G['com'..pn]=_G['P'..pn]:GetChild('Combo');
+						end
+						table.insert(ThingsToGrab,'LifeP'..pn); table.insert(ThingsToGrab,'ScoreP'..pn);
+						table.insert(ThingsToHide,'LifeP'..pn); table.insert(ThingsToHide,'ScoreP'..pn);
+					end	
+					for i,v in ipairs(ThingsToGrab) do _G[v] = SCREENMAN:GetTopScreen():GetChild(v) or nil end	
+					for i,v in ipairs(ThingsToHide) do if _G[v] then _G[v]:hidden(1) end end
+				checked = true;
+			end
+
+---------------------------------------------------------------------------------------
+----------------------Begin table handlers---------------------------------------------
+---------------------------------------------------------------------------------------
+			
+			disable = false;
+			if disable ~= true and checked then
+				
+				if beat > mod_firstSeenBeat+0.1 then -- performance coding!! --
+				-----------------------
+				-- Player mod resets --
+				-----------------------				
+					for i=1,2 do
+						GAMESTATE:ApplyModifiers('clearall',i)
+						if _G['init_modsp'..i] then 
+							GAMESTATE:ApplyModifiers(_G['init_modsp'..i],i)
+						end
+					end
+				
+				------------------------------------------------------------------------------
+				-- custom mod reader by TaroNuke edited by WinDEU and re-stolen by TaroNuke --
+				------------------------------------------------------------------------------
+					for i,v in pairs(mods) do
+						if v and table.getn(v) > 3 and v[1] and v[2] and v[3] and v[4] then
+							if beat >=v[1] then
+								if (v[4] == 'len' and beat <=v[1]+v[2]) or (v[4] == 'end' and beat <=v[2]) then
+									if table.getn(v) == 5 then
+										GAMESTATE:ApplyModifiers(v[3],v[5]);
+									else
+										GAMESTATE:ApplyModifiers(v[3]);
+									end
+								end
+							end
+						else
+							v[1] = 0;
+							v[2] = 0;
+							v[3] = '';
+							v[4] = 'error';
+							SCREENMAN:SystemMessage('Bad mod in beat-based table (line '..i..')');
+						end
+					end
+
+				------------------------------------------------------------------
+				-- Perframe stuff (Advanced Techniques involving actual coding) --
+				------------------------------------------------------------------
+
+				--[[if perframe(0, 31) then
+					-- do stuff
+				end]]
+				
+				---------------------------------------
+				-- Actions table --
+				---------------------------------------
+					while curaction<=table.getn(mod_actions) and GAMESTATE:GetSongBeat()>=mod_actions[curaction][1] do
+						if mod_actions[curaction][3] or GAMESTATE:GetSongBeat() < mod_actions[curaction][1]+2 then
+							if type(mod_actions[curaction][2]) == 'function' then
+								mod_actions[curaction][2]()
+							elseif type(mod_actions[curaction][2]) == 'string' then
+								MESSAGEMAN:Broadcast(mod_actions[curaction][2]);
+							end
+						end
+						curaction = curaction+1;
+					end
+				end
+				
+			end
+			
+			self:sleep(0.02);
+			self:queuecommand('Update');
+
+---------------------------------------------------------------------------------------
+----------------------END DON'T TOUCH IT KIDDO-----------------------------------------
+---------------------------------------------------------------------------------------
+			
+		end"
+		
+	/>
+</children></ActorFrame>
