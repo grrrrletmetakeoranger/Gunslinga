@@ -15,9 +15,9 @@ end"
 
 	<Layer 
 		Type="ActorProxy" 
-		Var="Clone1"
+		Var="clone1"
 		clone1onMessageCommand="hidden,0"
-        clone1offMessageCommand="hidden,1"
+		clone1offMessageCommand="hidden,1"
 		InitCommand="%function(self)
 		
 		self:hidden(1);
@@ -29,11 +29,11 @@ end"
 	
 	<Layer 
 		Type="ActorProxy" 
-		Var="Clone2"
+		Var="clone2"
 		clone2onMessageCommand="hidden,0"
-        clone2offMessageCommand="hidden,1"
+		clone2offMessageCommand="hidden,1"
 		InitCommand="%function(self)
-
+		
 		self:hidden(1);
 		self:zoom(1);
 		self:xy(scx+320, scy);
@@ -41,64 +41,65 @@ end"
 		end"
 	/>
 	
-    <Layer 
-        File="bbeam.png"
-        bbeamonMessageCommand="hidden,0"
-        bbeamoffMessageCommand="hidden,1"
-        InitCommand="%function(self)
+	<Layer 
+		File="bbeam.png"
+		bbeamonMessageCommand="hidden,0"
+		bbeamoffMessageCommand="hidden,1"
+		InitCommand="%function(self)
 		
-		self:hidden(1);
 		self:zoom(0.5);
 		self:xy(scx, scy);
+		self:hidden(1);
 		
 		Bbeam = self;	
-            
-        end"
-    />
+			
+		end"
+	/>
 
 	<Layer 
-        File="bbeam.png"
-        bbeamonMessageCommand="hidden,0"
-        bbeamoffMessageCommand="hidden,1"
-        InitCommand="%function(self)
+		File="bbeam.png"
+		bbeamonMessageCommand="hidden,0"
+		bbeamoffMessageCommand="hidden,1"
+		InitCommand="%function(self)
 		
 		self:zoom(0.5);
 		self:xy(scx, scy);
+		self:hidden(1);
 		
 		Bbeam1 = self;
-            
-        end"
-    />
+			
+		end"
+	/>
 	
-    <Layer 
-        File="bbeam.png"
-        bbeamonMessageCommand="hidden,0"
-        bbeamoffMessageCommand="hidden,1"
-        InitCommand="%function(self)
+	<Layer 
+		File="bbeam.png"
+		bbeamonMessageCommand="hidden,0"
+		bbeamoffMessageCommand="hidden,1"
+		InitCommand="%function(self)
 		
-		self:hidden(1);
 		self:zoom(0.5);
 		self:xy(scx, scy);
+		self:hidden(1);
 		
 		Bbeam2 = self;
-            
-        end"
-    />
+			
+		end"
+	/>
 
 	<Layer 
-        File="bbeam.png"
-        bbeamonMessageCommand="hidden,0"
-        bbeamoffMessageCommand="hidden,1"
-        InitCommand="%function(self)
+		File="bbeam.png"
+		bbeamonMessageCommand="hidden,0"
+		bbeamoffMessageCommand="hidden,1"
+		InitCommand="%function(self)
 		
-		self:hidden(1);
 		self:zoom(0.5);
 		self:xy(scx, scy);
+		self:hidden(1);
 		
 		Bbeam3 = self;
-            
-        end"
-    />
+			
+		end"
+	/>
 
 
 	<Layer
@@ -116,11 +117,11 @@ end"
 			mod_plr = {};		
 			mod_firstSeenBeat = GAMESTATE:GetSongBeat();
 			mods = {
+	
 	--Load immediately
 	{0,999,'*-1 2x, *-1 overhead, *-1 approachtype, *-1 dizzyholds, *-1 stealthpastreceptors, *-1 modtimer','end'},
 	{0,1,'*-1 600 zoom','len'},
 	{0,30,'*1 150 drunk','end'},
-	
 	
 	--begginning
 	{0,6,'*2 720 rotationz','end'},
@@ -132,7 +133,7 @@ end"
 	{99,101,'*0.2 0 tornado','end'},
 	{100,116,'*1 200 bumpy','end'},
 	{116,124,'*1 400 bumpy','end'},
-	{124,125.750,'*1 ww0 bumpy','end'},
+	{124,125.750,'*1 bumpy','end'},
 	{128,1,'*-1 0 bumpy','len'},
 	
 	--drop
@@ -156,7 +157,6 @@ end"
 	{268,273.500,'*1 -10 spiralx','end'},
 	{268,273.500,'*1 -10 spiraly','end'},
 	
-	
 	--funny begginning part but 2
 	{274,338.99,'*0.2 -30 tornado','end'},
 	{338,339,'*0.2 0 tornado','end'},
@@ -168,30 +168,28 @@ end"
 	--drop 2
 	{374,0.1,'*2 300 invert','len'},
 	
-	{374,391,'*0.1 250% movex','end'},
-	
 	{374,374.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {375,375.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{375,375.5,'*2 -75 movey1, *2 -75 movey3','end'},
 	{376,376.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {377,377.5,'*2 -75 movey1, *2 -75 movey3','end'},
-    {378,378.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {379,379.5,'*2 -75 movey1, *2 -75 movey3','end'},
-    {380,380.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{377,377.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{378,378.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{379,379.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{380,380.5,'*2 -75 movey0, *2 -75 movey2','end'},
 	{381,381.5,'*2 -75 movey1, *2 -75 movey3','end'},
 	{382,382.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {383,383.5,'*2 -75 movey1, *2 -75 movey3','end'},
-    {384,384.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {385,385.5,'*2 -75 movey1, *2 -75 movey3','end'},
-    {386,386.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{383,383.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{384,384.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{385,385.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{386,386.5,'*2 -75 movey0, *2 -75 movey2','end'},
 	{387,387.5,'*2 -75 movey1, *2 -75 movey3','end'},
 	{388,388.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {389,389.5,'*2 -75 movey1, *2 -75 movey3','end'},
-    {390,390.5,'*2 -75 movey0, *2 -75 movey2','end'},
-    {391,391.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{389,389.5,'*2 -75 movey1, *2 -75 movey3','end'},
+	{390,390.5,'*2 -75 movey0, *2 -75 movey2','end'},
+	{391,391.5,'*2 -75 movey1, *2 -75 movey3','end'},
 	
 	{406,410,'*4 -100 tornado','end'},
 	{414,418,'*4 100 tornado','end'},
-	{422,425.5,'*4 -100 tornado','end'},
+	{422,425.5,'*4 -00 tornado','end'},
 	
 	--end
 	{436,466,'*1 150 drunk','end'},
@@ -201,18 +199,7 @@ end"
 			curaction = 1;
 			mod_actions = {
 			
-			{0,function()
-					MESSAGEMAN:Broadcast('clone1off')
-				end,true},
-			
-			{0,function()
-					MESSAGEMAN:Broadcast('clone2off')
-				end,true},
-			
 			--On/Off for funny beams :]
-			{0,function()
-					MESSAGEMAN:Broadcast('bbeamoff')
-				end,true},
 			
 			{134,function()
 					MESSAGEMAN:Broadcast('bbeamon')
@@ -478,6 +465,10 @@ end"
 					MESSAGEMAN:Broadcast('bbeamoff')
 				end,true},
 			
+------------------------------------------------------------------------
+
+			-- for cloniess :]
+			
 			{372,function()
 					MESSAGEMAN:Broadcast('clone1on')
 				end,true},
@@ -495,23 +486,23 @@ end"
 				end,true},
 			
 			{-10,function()
-			local P1 = SCREENMAN:GetTopScreen():GetChild('PlayerP1')
-			
-			if P1 then
-				Clone1:SetTarget(P1:GetChild('NoteField'))
-			end
-			
-			local P1 = SCREENMAN:GetTopScreen():GetChild('PlayerP1')
-			
-			if P1 then
-				Clone2:SetTarget(P1:GetChild('NoteField'))
-			end
 				for i = 1,2 do
 				local p = SCREENMAN:GetTopScreen():GetChild('PlayerP'..i)
 					if p then
 						p:x(SCREEN_CENTER_X)
 					end
 				end
+			--funny clone part thingy
+			local P1 = SCREENMAN:GetTopScreen():GetChild('PlayerP1')
+			
+			if P1 then
+				clone1:SetTarget(P1:GetChild('NoteField'))
+			end
+			
+			if P1 then
+				clone2:SetTarget(P1:GetChild('NoteField'))
+			end
+			
 			end,true},
 			}
 			
@@ -519,8 +510,7 @@ end"
 ----------------------If you're starting out, ignore like everything below this--------
 ---------------------------------------------------------------------------------------
 			
-			--funny clone part thingy
-			
+			--also for funy clones
 			
 			for i=374.25,392,2 do
 						table.insert(mods,{i,1,'*2 350 invert','len'});
