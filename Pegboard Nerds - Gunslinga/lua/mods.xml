@@ -9,8 +9,22 @@
 		PP[pn]:SetTarget(P[pn])
 		P[pn]:hidden(1)
 	end
-	-- your code goes here here:
+	-- haha jonathan you are coding inside mods.xml
+	definemod {'fish', function(percent)
+        fish:GetShader():uniform1f('amount',percent)
+	end}
+	aft(O2)
+	aft(O3)
+	self:fov(45)
+	sprite(fish)
+	sprite(screen)
+	fish:SetTexture(O2:GetTexture())
+	screen:SetTexture(O3:GetTexture())
 	
+	setdefault{100,'dizzyholds',1,'zbuffer',100,'zoomz'}
+	set{0,800,'movey',720,'rotationy'}
+	ease{1, 6, inOutExpo, 0, 'movey', 0, 'rotationy'}
+	ease{2,4, inOutExpo, 1, 'fish'}
 	
 end)"
 Type = "ActorFrame"
@@ -21,33 +35,9 @@ Type = "ActorFrame"
 	<Layer Type = "ActorProxy" Name = "PJ[2]" />
 	<Layer Type = "ActorProxy" Name = "PP[1]" />
 	<Layer Type = "ActorProxy" Name = "PP[2]" />
-	<Layer Type="ActorFrameTexture"
-    OnCommand="%function(self)
-
-    self:SetWidth(DISPLAY:GetDisplayWidth());
-    self:SetHeight(DISPLAY:GetDisplayHeight());
-    self:EnableDepthBuffer( false );
-    self:EnableAlphaBuffer( true );
-    self:EnableFloat( false );
-    self:EnablePreserveTexture( true );
-    self:hidden(0);
-    self:diffusealpha(1);
-    self:zoom(0.6)
-    self:Create();
-    myAft=self
-end"
-/>
-	
-	<Layer Type="Sprite"
-	Frag="shaders/screen.frag"
-	OnCommand="%function(self) 
-	crt_shader = self; 
-	self:xy(SCREEN_CENTER_X, SCREEN_CENTER_Y);
-	self:basezoomx(SCREEN_WIDTH/DISPLAY:GetDisplayWidth());
-	self:basezoomy(SCREEN_HEIGHT/DISPLAY:GetDisplayHeight()*-1);
-	self:SetTexture(myAft:GetTexture());
-	self:diffusealpha(1)
-	end"
-	/>
 	<Layer File="_68/68mods.xml" />
+	<Layer Type = "ActorFrameTexture" Name = "O2" />
+	<Layer Type = "Sprite" Frag = "shaders/fisheye.frag" Name = "fish" />
+	<Layer Type="ActorFrameTexture" Name = "O3" />
+	<Layer Type = "Sprite" Frag = "shaders/screen.frag" Name = "screen" />
 </children></Mods>
