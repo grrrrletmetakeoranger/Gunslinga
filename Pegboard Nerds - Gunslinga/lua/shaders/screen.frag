@@ -30,7 +30,7 @@ void main()
 	col.b = texture2D( sampler0, img2tex(uv + texel / 2.0) ).b;
 
 	col *= 1.0 - sin(PI * uv.x * resolution.x / 1.0) * 0.5;
-	col *= 1.0 - cos(PI * uv.y * resolution.y / 2.0) * 0.5;
+	col *= 2.0 - cos(PI * uv.y * resolution.y / 2.0) * 0.5;
 
 	col *= 1.0 - fract(sin(uv.y + time * 0.5)) * 0.5;
 	col *= 1.0 - length(0.5 - uv) * 0.6;
