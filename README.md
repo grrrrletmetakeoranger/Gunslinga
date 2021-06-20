@@ -4,7 +4,7 @@
 ### visuals ### 
 (I've recently learned how to make good-ish dynamic backgrounds so I am going to pass the knowledge onto you and make something that will resemble the music video :troll:)
 
-At beat 68 (my brandmy bradmybrand) we the slider is we could put like a zoom effect or something like that 
+At beat 68 (my brandmy bradmybrand) we the slider is we could put like a zoom effect or something like that, or maybe "stop" the song, so the notes stops moving visually but they are actually keep moving
 
 ### mods ### 
 duh (I have a good idea of what to do and now the thing would be actually making the ideas)
