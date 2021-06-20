@@ -4,7 +4,7 @@
 ### visuals ### 
 (I've recently learned how to make good-ish dynamic backgrounds so I am going to pass the knowledge onto you and make something that will resemble the music video :troll:)
 
-At beat 68 (my brandmy bradmybrand) we the slider is we could put like a zoom effect or something like that, or maybe "stop" the song, so the notes stops moving visually but they are actually keep moving
+At beat 68 (my brandmy bradmybrand) on the slider part, we could put like a zoom effect or something like that, or maybe "stop" the notes, so the notes stops moving visually but they are actually keep moving
 
 And probably the same stopping thing at the beat 100, until 115
 
