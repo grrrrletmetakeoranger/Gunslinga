@@ -6,6 +6,8 @@
 
 At beat 68 (my brandmy bradmybrand) we the slider is we could put like a zoom effect or something like that, or maybe "stop" the song, so the notes stops moving visually but they are actually keep moving
 
+And probably the same stopping thing at the beat 100, until 115
+
 ### mods ### 
 duh (I have a good idea of what to do and now the thing would be actually making the ideas)
 I remember you talking about how you don't know what else to mod so maybe add lasers to other parts of the song
