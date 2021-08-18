@@ -22,16 +22,17 @@
 	fish:SetTexture(O2:GetTexture())
 	screen:SetTexture(O3:GetTexture())
 	pix:SetTexture(O4:GetTexture())
-	
-	--lyric[1]:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y)
-	
-	--[[func{4,function()
-	myTable1=fontslinga[1]:GetChildren()
+
+	func {0, function()
+    mytable1=fontslinga[1]:GetChildren()
 	fontslinga[1] = setup_texthandler(fontslinga[1])
-	fontslinga[1]:setFont('Point_Panther DEMO 8x13.png','Point_Panther_kerning.lua')
-	setTextBox(0,9,12) 
-	sayThis('Hello',0.06,'beep.ogg')
-	end}]]
+	fontslinga[1]:setFont('Point_Panther DEMO 8x12.png','Point_Panther DEMO_kerning.lua')
+	end}
+
+	func {1, function()
+		fontslinga[1]:setTextBox(0,100,-200,0)
+		fontslinga[1]:sayThis('haha funny text:3',0)
+	end}
 	
 	--definemods
 	definemod {'fish', function(percent)
@@ -65,9 +66,16 @@
 end)"
 Type = "ActorFrame"
 ><children>
-    <Layer File = "lyrics/YES.png" Name = "lyric[1]" />
 	<Layer Type = "ActorFrame"><children>
-	<Layer File = "text/letters.xml" Name = "fontslinga[1]" />
+	<Layer 
+		File = "text/letters.xml" 
+		Name = "fontslinga[1]"
+		InitCommand="%function(self)
+            scy = SCREEN_CENTER_Y
+            scx = SCREEN_CENTER_X
+			self:xy(scx, scy);
+		end"
+	/>
 	</children></Layer>
 	<Layer Type = "ActorProxy" Name = "PC[1]" />
 	<Layer Type = "ActorProxy" Name = "PC[2]" />

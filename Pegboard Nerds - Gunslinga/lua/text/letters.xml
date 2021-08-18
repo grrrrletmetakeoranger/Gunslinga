@@ -178,7 +178,7 @@ Condition="(function()
 						 
 			--]]
 
-	le_funny_meam='Open_Sans 8x13.png'
+	le_funny_meam='Point_Panther DEMO 8x12.png'
 
 	return true
 end)()"
@@ -215,7 +215,7 @@ function setup_texthandler(self)
 			local xstartv=0
 			local ystartv=0
 			local pxyv=0
-			local kernings = dofile('lua/text/Open_Sans_kerning.lua')
+			local kernings = dofile('lua/text/Point_Panther DEMO_kerning.lua')
 			
 			
 			for i=1,self:GetNumChildren()+2 do --let's make this table just a bit too large as a failsafe
