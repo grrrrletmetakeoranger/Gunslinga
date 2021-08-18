@@ -12,8 +12,9 @@ And 340-355
 
 At 468 (omg my brand again omgomgomg) you could probably put the effect at the beggining, when the playfield spins before the 2 sliders, but reverse, and maybe a bit slow
 
+we have text now. epic. we will now make the lyrics
 ### mods ### 
-duh (I have a good idea of what to do and now the thing would be actually making the ideas)
+making a lot of movement. don't know how to describe this better
 I remember you talking about how you don't know what else to mod so maybe add lasers to other parts of the song
 slumpage?????^667^^56554454545I had ideas for a harder chart so maybe
 

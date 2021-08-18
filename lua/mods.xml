@@ -1,0 +1,85 @@
+<Mods LoadCommand = "%xero(function(self)
+	-- judgment / combo proxies
+	for pn = 1, 2 do
+		setupJudgeProxy(PJ[pn], P[pn]:GetChild('Judgment'), pn)
+		setupJudgeProxy(PC[pn], P[pn]:GetChild('Combo'), pn)
+	end
+	-- player proxies
+	for pn = 1, #PP do
+		PP[pn]:SetTarget(P[pn])
+		P[pn]:hidden(1)
+	end
+	-- haha jonathan you are coding inside mods.xml in a collab file
+	
+	--actor defining part
+	aft(O2)
+	aft(O3)
+	aft(O4)
+	self:fov(45)
+	sprite(fish)
+	sprite(screen)
+	sprite(pix)
+	fish:SetTexture(O2:GetTexture())
+	screen:SetTexture(O3:GetTexture())
+	pix:SetTexture(O4:GetTexture())
+	
+	--lyric[1]:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y)
+	
+	--[[func{4,function()
+	myTable1=fontslinga[1]:GetChildren()
+	fontslinga[1] = setup_texthandler(fontslinga[1])
+	fontslinga[1]:setFont('Point_Panther DEMO 8x13.png','Point_Panther_kerning.lua')
+	setTextBox(0,9,12) 
+	sayThis('Hello',0.06,'beep.ogg')
+	end}]]
+	
+	--definemods
+	definemod {'fish', function(percent)
+        fish:GetShader():uniform1f('amount',percent)
+	end}
+	definemod {'pixelate', function(a)
+	    pix:GetShader():uniform1f('amount',200-a)
+	end}
+	setdefault{20,'pixelate'}
+	--mods!!
+	setdefault{100,'dizzyholds',1,'zbuffer',100,'zoomz'}
+	set{0,700,'movey',720,'rotationy'}
+	ease{1, 6, inOutExpo, 0, 'movey', 0, 'rotationy'}
+	ease{2,3.75, inOutExpo, 1, 'fish'}
+	ease{15,3.75, inOutExpo, 0, 'fish'}
+	ease{18,3.75, inOutExpo, 1, 'fish'}
+	ease{23,3.75, inOutExpo, 0, 'fish'}
+	ease{228, 12, inOutExpo, 700, 'movey', 720, 'rotationy'}
+	ease{239, 6, inOutExpo, 0, 'movey', 0, 'rotationy'}
+	ease{242,3.75, inOutExpo, 1, 'fish'}
+	ease{245,3.75, inOutExpo, 0, 'fish'}
+	ease{258,3.75, inOutExpo, 1, 'fish'}
+	ease{261,3.75, inOutExpo, 0, 'fish'}
+	ease{404,3.75, inOutExpo, -0.8, 'fish'}
+	ease{408,3.75, inOutExpo, 0, 'fish'}
+	ease{412,3.75, inOutExpo, -0.8, 'fish'}
+	ease{416,3.75, inOutExpo, 0, 'fish'}
+	ease{420,3.75, inOutExpo, -0.8, 'fish'}
+	ease{424,3.75, inOutExpo, 0, 'fish'}
+	
+end)"
+Type = "ActorFrame"
+><children>
+    <Layer File = "lyrics/YES.png" Name = "lyric[1]" />
+	<Layer Type = "ActorFrame"><children>
+	<Layer File = "text/letters.xml" Name = "fontslinga[1]" />
+	</children></Layer>
+	<Layer Type = "ActorProxy" Name = "PC[1]" />
+	<Layer Type = "ActorProxy" Name = "PC[2]" />
+	<Layer Type = "ActorProxy" Name = "PJ[1]" />
+	<Layer Type = "ActorProxy" Name = "PJ[2]" />
+	<Layer Type = "ActorProxy" Name = "PP[1]" />
+	<Layer Type = "ActorProxy" Name = "PP[2]" />
+	<Layer File="_68/68mods.xml" />
+	<Layer Type = "ActorFrameTexture" Name = "O4" />
+    <Layer Type = "Sprite" Frag = "shaders/pixelate.frag" Name = "pix" />
+	<Layer Type = "ActorFrameTexture" Name = "O2" />
+	<Layer Type = "Sprite" Frag = "shaders/fisheye.frag" Name = "fish" />
+	<Layer Type="ActorFrameTexture" Name = "O3" />
+	<Layer Type = "Sprite" Frag = "shaders/crt.frag" Name = "screen" />
+</children></Mods>
